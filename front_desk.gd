@@ -25,8 +25,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var player_action = Input.get_action_strength("player1_action")
 	if player_action > 0.5 and player_is_at_desk:
-		if active_customer.name != "NO_CUSTOMER":
+		if active_customer.name == "Customer":
 			active_customer.is_finished = true
+		else:
+			print("BUG: active customer is not customer:", active_customer)
 
 
 func _on_player_service_area_body_entered(body: Node3D) -> void:
