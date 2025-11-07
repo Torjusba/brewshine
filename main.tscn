@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcqpwlmumhgpi"]
+[gd_scene load_steps=10 format=3 uid="uid://dcqpwlmumhgpi"]
 
 [ext_resource type="PackedScene" uid="uid://b1e75dpa3j3n3" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://front_desk.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5xmp4jh8oiey" path="res://map.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://hqnvuggqtuie" path="res://customer.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://csgdva218hect" path="res://customer.gd" id="5_lquwl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,10 +40,26 @@ shape = SubResource("WorldBoundaryShape3D_ig7tw")
 transform = Transform3D(1, 0, 0, 0, 0.6550178, 0.75561345, 0, -0.75561345, 0.6550178, 4.3873568, 7.6036, 6.9255314)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025552273, 1.1167167, -0.34384012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025552273, 0.6445285, 0.75315475)
 
 [node name="Node3D" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31014192, 0.11229861, 4.0408096)
 
 [node name="cooking_map" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2931614, -0.4133296, -1.9008751)
+
+[node name="Customer" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8629963, 0.6896806, 5.1374702)
+script = ExtResource("5_lquwl")
+
+[node name="CustomerSpawnLocation" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.634705, 1.0503125, 5.505642)
+
+[node name="CustomerLeaveLocation" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.363474, 1.0503125, 5.505642)
+
+[node name="CustomerPurchaseLocation" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39010525, 1.0503125, 5.505642)
