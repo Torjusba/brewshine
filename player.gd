@@ -1,8 +1,10 @@
 extends CharacterBody3D
 class_name Player
 
+@onready var animation_player: AnimationPlayer = $base_character/AnimationPlayer
 const SPEED = 5.0
 var currently_carrying: Node3D = null
+
 
 func pickup(item: Node3D) -> void:
 	if currently_carrying:
@@ -32,4 +34,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	if not direction.is_zero_approx():
 		transform.basis = Basis.looking_at(direction)
+		animation_player.play("WalkCycle")
+	else:
+		animation_player.play("Idle")
 	move_and_slide()

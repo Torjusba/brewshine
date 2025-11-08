@@ -16,4 +16,12 @@ shape = SubResource("CapsuleShape3D_sh265")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7955638, -0.6173351)
 
 [node name="base_character" parent="." instance=ExtResource("2_onrkg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="base_character/Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0.7071068, 0, 0.7071068)
+bones/2/position = Vector3(8.6544404e-08, 0.04783413, -0.5257202)
+bones/2/rotation = Quaternion(-0.98994404, -1.00473336e-07, -2.468599e-07, 0.14146008)
+bones/7/position = Vector3(-1.11215975e-07, 0.0478341, 0.52572024)
+bones/7/rotation = Quaternion(8.543888e-08, 0.14146008, 0.98994404, -3.6204778e-08)
+
+[editable path="base_character"]
