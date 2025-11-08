@@ -9,11 +9,10 @@ var highlight_material: Material = Material.new() # placeholder
 
 var active_player: Node3D = null
 var active_customer: Node3D = null
-
+var active_customers = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("Front desk running")
 	front_desk_original_material = mesh_instance_3d.get_active_material(0).duplicate()
 	highlight_material = front_desk_original_material.duplicate()
 	highlight_material.emission_enabled = true
@@ -34,13 +33,13 @@ func _process(_delta: float) -> void:
 
 	var player_action = Input.get_action_strength("player1_action")
 	if player_action > 0.5 and player_interacting:
-		if active_customer != null:
-			if active_customer.name != "Customer":
-				print("BUG: active_customer is not Customer")
+		if not active_customers.is_empty():
 			if active_player.currently_carrying:
 				print("Handing ", active_player.currently_carrying, " to customer")
-				active_customer.purchase(active_player.currently_carrying, 10)
+				var customer = active_customers.pop_front()
+				customer.purchase(active_player.currently_carrying, 10)
 				active_player.currently_carrying = null
+
 
 
 func _on_player_service_area_body_entered(body: Node3D) -> void:
@@ -56,11 +55,5 @@ func _on_player_service_area_body_exited(body: Node3D) -> void:
 
 
 func _on_customer_area_body_entered(body: Node3D) -> void:
-	if body.name == "Customer":
-		print("Customer present")
-		active_customer = body
-
-func _on_customer_area_body_exited(body: Node3D) -> void:
-	if body.name == "Customer":
-		print("Customer left")
-		active_customer = null
+	if body is Customer3D:
+		active_customers.append(body)

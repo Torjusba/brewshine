@@ -46,4 +46,3 @@ shape = SubResource("BoxShape3D_lqt5c")
 [connection signal="body_entered" from="PlayerServiceArea" to="." method="_on_player_service_area_body_entered"]
 [connection signal="body_exited" from="PlayerServiceArea" to="." method="_on_player_service_area_body_exited"]
 [connection signal="body_entered" from="CustomerArea" to="." method="_on_customer_area_body_entered"]
-[connection signal="body_exited" from="CustomerArea" to="." method="_on_customer_area_body_exited"]

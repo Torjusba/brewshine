@@ -16,7 +16,6 @@ var coffee_cup: Node3D = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Coffee maker running")
-	coffee_cup = $CoffeeCup
 	front_desk_original_material = mesh_instance_3d.get_active_material(0).duplicate()
 	highlight_material = front_desk_original_material.duplicate()
 	highlight_material.emission_enabled = true

@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://hqnvuggqtuie"]
+[gd_scene load_steps=4 format=3 uid="uid://hqnvuggqtuie"]
+
+[ext_resource type="Script" uid="uid://csgdva218hect" path="res://customer.gd" id="1_7tiyv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8l5f2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8l5f2"]
 
 [node name="Customer" type="CharacterBody3D"]
+script = ExtResource("1_7tiyv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_8l5f2")
@@ -14,3 +17,6 @@ shape = SubResource("CapsuleShape3D_8l5f2")
 
 [node name="CarryingPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.60552734)
+
+[node name="QueueRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(-2, 0, 0)
