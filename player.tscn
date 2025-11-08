@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1e75dpa3j3n3"]
+[gd_scene load_steps=5 format=3 uid="uid://b1e75dpa3j3n3"]
 
 [ext_resource type="Script" uid="uid://dunrv306y5d0b" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://du3fa1pr4sp4q" path="res://map/base_character.blend" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://dpuijemnq5b2i" path="res://characters/cosmetics/hair.blend" id="3_i3pqv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -28,5 +29,8 @@ bones/7/rotation = Quaternion(8.543888e-08, 0.14146008, 0.98994404, -3.6204778e-
 transform = Transform3D(-1.1920929e-07, 0, 1, 0, 0.99999994, 0, -1, 0, -1.1920929e-07, 2.5400574e-22, 0.9287162, -2.5400574e-22)
 bone_name = "Bone.002"
 bone_idx = 4
+
+[node name="hair" parent="base_character/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_i3pqv")]
+transform = Transform3D(-3.5467608e-08, 0, -0.85656947, 0, 0.8114046, 0, 0.81140435, 0, -3.7441836e-08, -0.01476109, 0.35887957, -1.7596591e-09)
 
 [editable path="base_character"]
