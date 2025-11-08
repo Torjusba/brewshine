@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx5vl7c3gps0n"]
+[gd_scene load_steps=7 format=3 uid="uid://cx5vl7c3gps0n"]
 
 [ext_resource type="Script" uid="uid://dhv55we4dqoav" path="res://workstations/coffee_maker.gd" id="1_0n7hs"]
+[ext_resource type="PackedScene" uid="uid://pu6ebmrp5rxn" path="res://map/coffee_brewer.blend" id="2_jd0cl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il1gm"]
 albedo_color = Color(0.5370987, 0.5370987, 0.5370987, 1)
@@ -12,29 +13,6 @@ material = SubResource("StandardMaterial3D_il1gm")
 size = Vector3(2.40625, 0.14477539, 2.0861816)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lqt5c"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jd0cl"]
-albedo_color = Color(0.32, 0.21375999, 0.054400004, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_jd0cl"]
-material = SubResource("StandardMaterial3D_jd0cl")
-top_radius = 0.2
-bottom_radius = 0.2
-height = 0.3
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_uyjwf"]
-top_radius = 0.2
-bottom_radius = 0.05
-height = 0.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyjwf"]
-albedo_color = Color(0.3254902, 0.24313726, 0.15686275, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ip17r"]
-material = SubResource("StandardMaterial3D_uyjwf")
-top_radius = 0.15
-bottom_radius = 0.15
-height = 0.01
 
 [node name="CoffeeMaker" type="Node3D"]
 script = ExtResource("1_0n7hs")
@@ -56,20 +34,11 @@ shape = SubResource("BoxShape3D_4r82i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_lqt5c")
 
-[node name="BrewerBottom" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66490173, -0.17856252)
-mesh = SubResource("CylinderMesh_jd0cl")
-
-[node name="BrewerTop" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90692425, -0.17883287)
-mesh = SubResource("CylinderMesh_uyjwf")
-
-[node name="BrewerTopTop" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0035324, -0.17744674)
-mesh = SubResource("CylinderMesh_ip17r")
-
 [node name="CoffeeCupPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0046976507, 0.5879359, 0.24318194)
+
+[node name="coffee_brewer" parent="." instance=ExtResource("2_jd0cl")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0.4574731, 0.5, -0.2387298)
 
 [connection signal="timeout" from="MakingCoffeeTimer" to="." method="_on_making_coffee_timer_timeout"]
 [connection signal="body_entered" from="PlayerServiceArea" to="." method="_on_player_service_area_body_entered"]
