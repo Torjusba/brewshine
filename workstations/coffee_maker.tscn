@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cx5vl7c3gps0n"]
+
+[ext_resource type="Script" uid="uid://dhv55we4dqoav" path="res://workstations/coffee_maker.gd" id="1_0n7hs"]
+[ext_resource type="PackedScene" uid="uid://dfvjkmn5pjacq" path="res://coffee_cup.tscn" id="2_jd0cl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il1gm"]
+albedo_color = Color(0.5370987, 0.5370987, 0.5370987, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lqt5c"]
+material = SubResource("StandardMaterial3D_il1gm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4r82i"]
+size = Vector3(2.40625, 0.14477539, 2.0861816)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqt5c"]
+
+[node name="CoffeeMaker" type="Node3D"]
+script = ExtResource("1_0n7hs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_lqt5c")
+
+[node name="PlayerServiceArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerServiceArea"]
+shape = SubResource("BoxShape3D_4r82i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_lqt5c")
+
+[node name="CoffeeCup" parent="." instance=ExtResource("2_jd0cl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14001548, 0.6, 0.14586215)
+
+[node name="CoffeeCup2" parent="." instance=ExtResource("2_jd0cl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023415804, 0.6, -0.1700058)
+
+[node name="CoffeeCup3" parent="." instance=ExtResource("2_jd0cl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26327157, 0.6, 0.24250335)
+
+[connection signal="body_entered" from="PlayerServiceArea" to="." method="_on_player_service_area_body_entered"]
+[connection signal="body_exited" from="PlayerServiceArea" to="." method="_on_player_service_area_body_exited"]

@@ -3,11 +3,27 @@ extends CharacterBody3D
 @onready var meshes: Node3D = $Meshes
 
 const SPEED = 5.0
+var currently_carrying: Node3D = null
+
+func pickup(item: Node3D) -> void:
+	if currently_carrying:
+		print("Player can't pickup, is already carrying")
+		return
+	print("Pickup")
+	item.reparent($CarryingPosition, false)
+	item.position = Vector3.ZERO
+	currently_carrying = item
+	print("Picked up ", currently_carrying)
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	if currently_carrying:
+		print("Carrying ", currently_carrying)
+		print("At position: ", currently_carrying.global_position)
 
 
 	# Get the input direction and handle the movement/deceleration.

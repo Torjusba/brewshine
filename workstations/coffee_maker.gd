@@ -8,12 +8,12 @@ var front_desk_original_material: Material = Material.new() # placeholder
 var highlight_material: Material = Material.new() # placeholder
 
 var active_player: Node3D = null
-var active_customer: Node3D = null
-
+var coffee_cup: Node3D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("Front desk running")
+	print("Coffee maker running")
+	coffee_cup = $CoffeeCup
 	front_desk_original_material = mesh_instance_3d.get_active_material(0).duplicate()
 	highlight_material = front_desk_original_material.duplicate()
 	highlight_material.emission_enabled = true
@@ -34,30 +34,19 @@ func _process(_delta: float) -> void:
 
 	var player_action = Input.get_action_strength("player1_action")
 	if player_action > 0.5 and player_interacting:
-		if active_customer != null:
-			if active_customer.name != "Customer":
-				print("BUG: active_customer is not Customer")
-			active_customer.is_finished = true
+		print("Interaction with coffee maker")
+		if coffee_cup and not active_player.currently_carrying:
+			active_player.pickup(coffee_cup)
+			print("CoffeeMaker hands cup to player")
 
 
 func _on_player_service_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		active_player = body
-		print("Player entered desk")
+		print("Player entered CoffeeMaker")
 
 
 func _on_player_service_area_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		active_player = null
-		print("Player left desk")
-
-
-func _on_customer_area_body_entered(body: Node3D) -> void:
-	if body.name == "Customer":
-		print("Customer present")
-		active_customer = body
-
-func _on_customer_area_body_exited(body: Node3D) -> void:
-	if body.name == "Customer":
-		print("Customer left")
-		active_customer = null
+		print("Player left CoffeeMaker")

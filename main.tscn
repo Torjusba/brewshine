@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcqpwlmumhgpi"]
+[gd_scene load_steps=11 format=3 uid="uid://dcqpwlmumhgpi"]
 
 [ext_resource type="PackedScene" uid="uid://b1e75dpa3j3n3" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://front_desk.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://workstations/front_desk.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5xmp4jh8oiey" path="res://map.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://hqnvuggqtuie" path="res://customer.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://csgdva218hect" path="res://customer.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cx5vl7c3gps0n" path="res://workstations/coffee_maker.tscn" id="6_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -63,3 +64,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.363474, 1.0503125, 5.50564
 [node name="CustomerPurchaseLocation" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39010525, 1.0503125, 5.505642)
+
+[node name="CoffeeMaker" parent="." instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.983947, 0.06500256, 0.667397)
