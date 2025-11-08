@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://hqnvuggqtuie"]
+[gd_scene load_steps=5 format=3 uid="uid://hqnvuggqtuie"]
 
 [ext_resource type="Script" uid="uid://csgdva218hect" path="res://customer.gd" id="1_7tiyv"]
 [ext_resource type="PackedScene" uid="uid://du3fa1pr4sp4q" path="res://map/base_character.blend" id="2_r8ta2"]
+[ext_resource type="Texture2D" uid="uid://043hqs0pwlwx" path="res://moon.png" id="3_f7asb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8l5f2"]
 
@@ -21,3 +22,8 @@ target_position = Vector3(-2, 0, 0)
 
 [node name="base_character" parent="." instance=ExtResource("2_r8ta2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="WantsMoonshineSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 2.5250697, -0.96943676)
+visible = false
+texture = ExtResource("3_f7asb")
