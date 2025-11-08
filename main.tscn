@@ -1,16 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://dcqpwlmumhgpi"]
+[gd_scene load_steps=19 format=3 uid="uid://dcqpwlmumhgpi"]
 
 [ext_resource type="PackedScene" uid="uid://b1e75dpa3j3n3" path="res://characters/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://workstations/front_desk.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5xmp4jh8oiey" path="res://map/map.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cx5vl7c3gps0n" path="res://workstations/coffee_maker.tscn" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c2pgi1vch068a" path="res://jail_cell_background.png" id="7_efxa6"]
-[ext_resource type="PackedScene" uid="uid://b2j3lpntjlnxa" path="res://map/garage/garage_gate.tscn" id="8_5vw27"]
-[ext_resource type="PackedScene" path="res://workstations/trash_can.tscn" id="9_4c57u"]
-[ext_resource type="PackedScene" path="res://workstations/still.tscn" id="9_efxa6"]
+[ext_resource type="PackedScene" uid="uid://b53w5u8j4chgh" path="res://workstations/trash_can.tscn" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://xpsy6q7orpdd" path="res://level_manager.gd" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://b667gfgpu5smh" path="res://map/garage/garage_button.tscn" id="10_4c57u"]
-[ext_resource type="PackedScene" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dpwot1utup8mb" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://b3ncbc5od4dfj" path="res://ingredients/needs_coffee.png" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://83lv26pm1bo1" path="res://ingredients/coffee_beans.tscn" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://20xdd5h4oe5i" path="res://ingredients/needs_water.png" id="14_vivmo"]
@@ -68,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4293344, 0.06500256, 2.5303
 
 [node name="LevelManager" type="Node3D" parent="." node_paths=PackedStringArray("garage_gate")]
 script = ExtResource("9_kek77")
-garage_gate = NodePath("../garage_gate")
+garage_gate = NodePath("")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="LevelManager"]
 
@@ -152,18 +150,12 @@ text = "REASON"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="garage_gate" parent="." instance=ExtResource("8_5vw27")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.70820045, 0.47884965, -0.8218119)
-
 [node name="TrashCan" parent="." instance=ExtResource("9_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.690804, 0.08902788, 2.8450108)
 
-[node name="Still" parent="." instance=ExtResource("9_efxa6")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.441442, -0.30961645, -2.1657736)
-
 [node name="GarageButton" parent="." node_paths=PackedStringArray("garage_gate") instance=ExtResource("10_4c57u")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.1464176, 0.58152825, -0.8768848)
-garage_gate = NodePath("../garage_gate")
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.1464176, 0.58152825, -1.6307678)
+garage_gate = NodePath("../cooking_map/garage_gate")
 
 [node name="CoffeeBeansItemBarrel" parent="." instance=ExtResource("11_ycdy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9283237, -0.3390723, 0.29791784)
@@ -176,3 +168,5 @@ texture = ExtResource("14_vivmo")
 item_scene = ExtResource("15_2cqfq")
 
 [connection signal="pressed" from="LevelManager/LoseCanvas/ColorRect/ReplayButton" to="LevelManager" method="_on_replay_button_pressed"]
+
+[editable path="cooking_map"]
