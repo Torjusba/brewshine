@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5xmp4jh8oiey"]
+[gd_scene load_steps=20 format=3 uid="uid://c5xmp4jh8oiey"]
 
 [ext_resource type="PackedScene" uid="uid://nji0wcc43ign" path="res://map/map_placeables/cooking_map.blend" id="1_c7s6e"]
 [ext_resource type="Material" uid="uid://d3xpsd4e5vn4d" path="res://map/garage/garage_floor.tres" id="2_a0dt8"]
+[ext_resource type="Material" uid="uid://c101sq7mjdoyj" path="res://map/roof.tres" id="2_sjjp3"]
 [ext_resource type="PackedScene" uid="uid://dncylhnic31l" path="res://map/map_placeables/workbench.blend" id="3_7lyie"]
-[ext_resource type="PackedScene" path="res://workstations/still.tscn" id="4_5jdw0"]
+[ext_resource type="PackedScene" uid="uid://s0e00wacd538" path="res://workstations/still.tscn" id="4_5jdw0"]
 [ext_resource type="PackedScene" path="res://workstations/trash_can.tscn" id="5_kxmgb"]
 [ext_resource type="PackedScene" uid="uid://cx5vl7c3gps0n" path="res://workstations/coffee_maker.tscn" id="6_e8e5r"]
 [ext_resource type="PackedScene" uid="uid://b6arbnitel6lp" path="res://workstations/corn_shelf.tscn" id="7_5jdw0"]
@@ -27,6 +28,7 @@ transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 2.9999998, 10, 0, -5)
 
 [node name="GarageRoof" parent="." index="4"]
 transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 2.9999998, 0, 0, -5)
+surface_material_override/0 = ExtResource("2_sjjp3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -4)
