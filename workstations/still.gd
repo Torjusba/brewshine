@@ -10,8 +10,9 @@ const MoonshineScene = preload("res://ingredients/moonshine.tscn")
 var original_material: Material = Material.new() # placeholder
 var highlight_material: Material = Material.new() # placeholder
 
-var active_player: Node3D = null
-var moonshine: Node3D = null
+var active_player: Player = null
+var moonshine: Item3D = null
+var needs_water: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,7 +20,6 @@ func _ready() -> void:
 	highlight_material = original_material.duplicate()
 	highlight_material.emission_enabled = true
 	highlight_material.emission = Color(1, 1, 0.4)
-	making_moonshine_timer.start()  # TODO require an action with water and coffee beans
 
 func _looks_at_desk(body: Node3D) -> bool:
 	var pos_vec = (self.global_position - body.global_position).normalized()
@@ -34,13 +34,20 @@ func _process(_delta: float) -> void:
 	else:
 		still_floor.set_surface_override_material(0, original_material)
 
-	var player_action = Input.get_action_strength("player1_action")
-	if player_action > 0.5 and player_interacting:
-		if moonshine and not active_player.currently_carrying:
+	if player_interacting and active_player.is_attempting_action:
+		if active_player.currently_carrying:
+			if needs_water and active_player.currently_carrying.item_name == "Water":
+				active_player.currently_carrying.queue_free()
+				active_player.currently_carrying = null
+				needs_water = false
+		elif moonshine:
 			active_player.pickup(moonshine)
-			print("Still hands cup to player")
-			making_moonshine_timer.start()  # TODO require an action with water and coffee beans
 			moonshine = null
+	
+	if making_moonshine_timer.is_stopped() and not needs_water:
+		making_moonshine_timer.start()
+
+	$NeedsWaterSprite.visible = needs_water
 
 func _on_player_service_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
@@ -58,4 +65,4 @@ func _on_making_moonshine_timer_timeout() -> void:
 	moonshine = MoonshineScene.instantiate()
 	add_child(moonshine)
 	moonshine.global_position = $MoonshinePosition.global_position
-	print("Made a cup of moonshine: ", moonshine)
+	needs_water = true

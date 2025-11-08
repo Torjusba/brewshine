@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://s0e00wacd538"]
+[gd_scene load_steps=8 format=3 uid="uid://s0e00wacd538"]
 
-[ext_resource type="PackedScene" uid="uid://deiebafgu86lt" path="res://map/still.blend" id="1_a5qy4"]
+[ext_resource type="PackedScene" uid="uid://deiebafgu86lt" path="res://map/map_placeables/still.blend" id="1_a5qy4"]
 [ext_resource type="Script" uid="uid://bj5q7sgciqk58" path="res://workstations/still.gd" id="1_i5vuu"]
+[ext_resource type="Texture2D" uid="uid://20xdd5h4oe5i" path="res://ingredients/needs_water.png" id="3_3c38n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg3ms"]
 albedo_color = Color(0.34, 0.34, 0.34, 1)
@@ -43,6 +44,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3588856, 0.15582421, -0.211
 [node name="MakingMoonshineTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="NeedsWaterSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50579906, 0.7803705, -0.73748446)
+visible = false
+pixel_size = 0.05
+billboard = 1
+texture = ExtResource("3_3c38n")
 
 [connection signal="body_entered" from="PlayerServiceArea" to="." method="_on_player_service_area_body_entered"]
 [connection signal="body_exited" from="PlayerServiceArea" to="." method="_on_player_service_area_body_exited"]
