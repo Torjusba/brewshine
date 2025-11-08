@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcqpwlmumhgpi"]
+[gd_scene load_steps=16 format=3 uid="uid://dcqpwlmumhgpi"]
 
 [ext_resource type="PackedScene" uid="uid://b1e75dpa3j3n3" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://workstations/front_desk.tscn" id="2_0xm2m"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cx5vl7c3gps0n" path="res://workstations/coffee_maker.tscn" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c2pgi1vch068a" path="res://jail_cell_background.png" id="7_efxa6"]
 [ext_resource type="PackedScene" uid="uid://b2j3lpntjlnxa" path="res://garage_gate.tscn" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://c53gb6q8o8c11" path="res://map/barrel.blend" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://b53w5u8j4chgh" path="res://workstations/trash_can.tscn" id="9_4c57u"]
 [ext_resource type="PackedScene" uid="uid://s0e00wacd538" path="res://workstations/still.tscn" id="9_efxa6"]
 [ext_resource type="Script" uid="uid://xpsy6q7orpdd" path="res://level_manager.gd" id="9_kek77"]
@@ -50,7 +49,7 @@ shape = SubResource("WorldBoundaryShape3D_ig7tw")
 transform = Transform3D(1, 0, 0, 0, 0.88748586, 0.46083495, 0, -0.46083495, 0.88748586, 4.3873568, 5.6678643, 7.8876534)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025552273, 0.6445285, 0.75315475)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.025552273, -0.409451, 1.5179462)
 
 [node name="FrontDesk" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31014192, 0.11229861, 4.0408096)
@@ -60,9 +59,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2931614, -0.4133296, -1.900
 
 [node name="CoffeeMaker" parent="." instance=ExtResource("6_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.983947, 0.06500256, 0.667397)
-
-[node name="barrel" parent="." instance=ExtResource("8_kek77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0002823, -0.41113305, -1.6440091)
 
 [node name="LevelManager" type="Node3D" parent="." node_paths=PackedStringArray("garage_gate")]
 script = ExtResource("9_kek77")
@@ -154,7 +150,7 @@ metadata/_edit_use_anchors_ = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.70820045, 0.47884965, -0.8218119)
 
 [node name="TrashCan" parent="." instance=ExtResource("9_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7220073, 0.08902788, 2.468711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.690804, 0.08902788, 2.8450108)
 
 [node name="Still" parent="." instance=ExtResource("9_efxa6")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.441442, -0.30961645, -2.1657736)
