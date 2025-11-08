@@ -13,10 +13,13 @@ const PolicemanScene = preload("res://policeman.tscn")
 
 var seconds_to_next_customer: float = 0.0
 var current_money: int = 0;
+@onready var lose_canvas: CanvasLayer = $LoseCanvas
+@onready var loss_reason_label: Label = $LoseCanvas/ColorRect/LossReasonLabel
 
-func lose() -> void:
-	print("YOU LOSE")
-	# TODO proper loss
+func lose(reason: String = "") -> void:
+	loss_reason_label.text = reason
+	lose_canvas.visible = true
+	Engine.time_scale = 0
 
 func add_payment(money: int) -> void:
 	current_money += money
@@ -41,7 +44,7 @@ func spawn_new_customer() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	lose_canvas.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,3 +55,8 @@ func _process(delta: float) -> void:
 		seconds_to_next_customer = 2.0 + randf() * 3.0
 
 	seconds_to_next_customer -= delta
+
+
+func _on_replay_button_pressed() -> void:
+	get_tree().reload_current_scene()
+	Engine.time_scale = 1.0

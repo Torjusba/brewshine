@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dcqpwlmumhgpi"]
+[gd_scene load_steps=17 format=3 uid="uid://dcqpwlmumhgpi"]
 
 [ext_resource type="PackedScene" uid="uid://b1e75dpa3j3n3" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://workstations/front_desk.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5xmp4jh8oiey" path="res://map.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cx5vl7c3gps0n" path="res://workstations/coffee_maker.tscn" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://c2pgi1vch068a" path="res://jail_cell_background.png" id="7_efxa6"]
 [ext_resource type="PackedScene" uid="uid://b2j3lpntjlnxa" path="res://garage_gate.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://c53gb6q8o8c11" path="res://map/barrel.blend" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://b53w5u8j4chgh" path="res://workstations/trash_can.tscn" id="9_4c57u"]
@@ -25,6 +26,9 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ig7tw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4c57u"]
+font_size = 60
 
 [node name="World" type="Node3D"]
 
@@ -82,6 +86,70 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.363474, -0.5275984, 5.1231
 [node name="CustomerPurchaseLocation" type="Node3D" parent="LevelManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39010525, -0.5275984, 5.123149)
 
+[node name="LoseCanvas" type="CanvasLayer" parent="LevelManager"]
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="LevelManager/LoseCanvas"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 28.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("7_efxa6")
+
+[node name="ColorRect" type="ColorRect" parent="LevelManager/LoseCanvas"]
+anchors_preset = -1
+anchor_left = 0.1970486
+anchor_top = 0.24537037
+anchor_right = 0.8029514
+anchor_bottom = 0.7546296
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3553136, 0.35531354, 0.35531357, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ReplayButton" type="Button" parent="LevelManager/LoseCanvas/ColorRect"]
+layout_mode = 0
+anchor_left = 0.41117477
+anchor_top = 0.6939394
+anchor_right = 0.60028654
+anchor_bottom = 0.7878788
+text = "Replay"
+metadata/_edit_use_anchors_ = true
+
+[node name="YouLoseLabel" type="Label" parent="LevelManager/LoseCanvas/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3252149
+anchor_top = 0.21515152
+anchor_right = 0.69627506
+anchor_bottom = 0.46666667
+grow_horizontal = 2
+grow_vertical = 2
+text = "JAILED"
+label_settings = SubResource("LabelSettings_4c57u")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LossReasonLabel" type="Label" parent="LevelManager/LoseCanvas/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45415473
+anchor_top = 0.5212121
+anchor_right = 0.54584527
+anchor_bottom = 0.59090906
+offset_bottom = 1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "REASON"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="garage_gate" parent="." instance=ExtResource("8_5vw27")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.70820045, 0.47884965, -0.8218119)
 
@@ -94,3 +162,5 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4
 [node name="GarageButton" parent="." node_paths=PackedStringArray("garage_gate") instance=ExtResource("10_4c57u")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.1464176, 0.58152825, -0.8768848)
 garage_gate = NodePath("../garage_gate")
+
+[connection signal="pressed" from="LevelManager/LoseCanvas/ColorRect/ReplayButton" to="LevelManager" method="_on_replay_button_pressed"]

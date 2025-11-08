@@ -15,9 +15,10 @@ const DEFAULT_SUSPICIOUSNESS_PER_SECOND = -2
 var garage_gate: GarageGate = null
 var suspiciousness_pct: float = 0.0
 
+
 func purchase(item: Sellable3D, price: int) -> void:
 	if item.item_name == "Moonshine":
-		suspiciousness_pct = 100
+		level_manager.lose("You sold moonshine to a cop")
 	super.purchase(item, price)
 
 func _process(delta: float) -> void:
@@ -36,7 +37,7 @@ func _process(delta: float) -> void:
 		suspiciousness_pct = 0
 	
 	if suspiciousness_pct >= 100:
-		level_manager.lose()
+		level_manager.lose("You failed to hide your moonshine from the cops")
 		
 	if suspiciousness_pct >= 50:
 		warning_sprite.visible = true
