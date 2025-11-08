@@ -37,6 +37,11 @@ func _process(delta: float) -> void:
 
 	if currently_carrying:
 		target_position = leave_position
+
+	if position.distance_to(target_position) <= 0.1:
+		rotation_degrees.y = -90
+	else:
+		rotation_degrees.y = 0
 	
 	if position.distance_to(leave_position) <= 1.0:
 		queue_free()
