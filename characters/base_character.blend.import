@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://deiebafgu86lt"
-path="res://.godot/imported/still.blend-ab0b04b9c8c338e9d74da58506a167b9.scn"
+uid="uid://du3fa1pr4sp4q"
+path="res://.godot/imported/base_character.blend-a771bd24abd853a82a1220df7811623d.scn"
 
 [deps]
 
-source_file="res://map/still.blend"
-dest_files=["res://.godot/imported/still.blend-ab0b04b9c8c338e9d74da58506a167b9.scn"]
+source_file="res://characters/base_character.blend"
+dest_files=["res://.godot/imported/base_character.blend-a771bd24abd853a82a1220df7811623d.scn"]
 
 [params]
 

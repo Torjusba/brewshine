@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c53gb6q8o8c11"
-path="res://.godot/imported/barrel.blend-4369f864dce5140bb6197ae133c4f13d.scn"
+uid="uid://352d6lnv4b5c"
+path="res://.godot/imported/bottle_shelf.blend-27986da5c94332252a6d5e4ebb2389cc.scn"
 
 [deps]
 
-source_file="res://map/barrel.blend"
-dest_files=["res://.godot/imported/barrel.blend-4369f864dce5140bb6197ae133c4f13d.scn"]
+source_file="res://map/map_placeables/bottle_shelf.blend"
+dest_files=["res://.godot/imported/bottle_shelf.blend-27986da5c94332252a6d5e4ebb2389cc.scn"]
 
 [params]
 

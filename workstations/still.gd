@@ -5,7 +5,7 @@ class_name Still
 @onready var making_moonshine_timer: Timer = $MakingMoonshineTimer
 @onready var still_floor: MeshInstance3D = $StillFloor
 
-const MoonshineScene = preload("res://moonshine.tscn")
+const MoonshineScene = preload("res://ingredients/moonshine.tscn")
 
 var original_material: Material = Material.new() # placeholder
 var highlight_material: Material = Material.new() # placeholder

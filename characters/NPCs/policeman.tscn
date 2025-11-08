@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://devkuuoyfp8kp"]
 
-[ext_resource type="Script" uid="uid://b3km75e5uox7w" path="res://policeman.gd" id="1_egjju"]
-[ext_resource type="PackedScene" uid="uid://du3fa1pr4sp4q" path="res://map/base_character.blend" id="1_m7br2"]
+[ext_resource type="Script" uid="uid://b3km75e5uox7w" path="res://characters/NPCs/policeman.gd" id="1_egjju"]
+[ext_resource type="PackedScene" uid="uid://du3fa1pr4sp4q" path="res://characters/base_character.blend" id="1_m7br2"]
 [ext_resource type="Texture2D" uid="uid://ckgrg3n8lle36" path="res://yellow_warning.png" id="3_egjju"]
 [ext_resource type="PackedScene" uid="uid://b4r7jpthuufyo" path="res://characters/cosmetics/police_hat.blend" id="4_rlgyh"]
 

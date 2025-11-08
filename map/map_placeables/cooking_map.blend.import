@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://do7aiar8mvglx"
-path="res://.godot/imported/garage_gate.blend-f0a3238eca713364126507e03b7e7667.scn"
+uid="uid://nji0wcc43ign"
+path="res://.godot/imported/cooking_map.blend-0bfd4a17b4782fc69c37b8b5a719cb47.scn"
 
 [deps]
 
-source_file="res://map/garage_gate.blend"
-dest_files=["res://.godot/imported/garage_gate.blend-f0a3238eca713364126507e03b7e7667.scn"]
+source_file="res://map/map_placeables/cooking_map.blend"
+dest_files=["res://.godot/imported/cooking_map.blend-0bfd4a17b4782fc69c37b8b5a719cb47.scn"]
 
 [params]
 

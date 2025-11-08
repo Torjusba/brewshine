@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dncylhnic31l"
-path="res://.godot/imported/workbench.blend-4da6b6bc8725cde4c1a37c366d3fd311.scn"
+uid="uid://pu6ebmrp5rxn"
+path="res://.godot/imported/coffee_brewer.blend-8eaf9052322a0fe4a80d4ccb113adb3b.scn"
 
 [deps]
 
-source_file="res://map/workbench.blend"
-dest_files=["res://.godot/imported/workbench.blend-4da6b6bc8725cde4c1a37c366d3fd311.scn"]
+source_file="res://map/map_placeables/coffee_brewer.blend"
+dest_files=["res://.godot/imported/coffee_brewer.blend-8eaf9052322a0fe4a80d4ccb113adb3b.scn"]
 
 [params]
 

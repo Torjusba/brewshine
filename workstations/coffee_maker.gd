@@ -11,7 +11,7 @@ var needs_coffee_beans: bool = false
 @onready var needs_water_sprite: Sprite3D = $NeedsWaterSprite
 @onready var needs_coffee_beans_sprite: Sprite3D = $NeedsCoffeeSprite
 
-const CoffeeCupScene = preload("res://coffee_cup.tscn")
+const CoffeeCupScene = preload("res://ingredients/coffee_cup.tscn")
 
 var original_material: Material = Material.new() # placeholder
 var highlight_material: Material = Material.new() # placeholder

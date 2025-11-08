@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5xmp4jh8oiey"]
-
-[ext_resource type="PackedScene" uid="uid://nji0wcc43ign" path="res://map/cooking_map.blend" id="1_c7s6e"]
-
-[node name="cooking_map" instance=ExtResource("1_c7s6e")]

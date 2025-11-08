@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfvjkmn5pjacq"]
 
-[ext_resource type="Script" uid="uid://b5er7tw6ohjhf" path="res://coffee_cup.gd" id="1_x27ho"]
+[ext_resource type="Script" uid="uid://b5er7tw6ohjhf" path="res://ingredients/coffee_cup.gd" id="1_x27ho"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x27ho"]
 albedo_color = Color(0.32, 0.2032, 0.086399995, 1)

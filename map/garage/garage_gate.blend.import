@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://352d6lnv4b5c"
-path="res://.godot/imported/bottle_shelf.blend-3be453ba07be5ade2f6a2fe885e90998.scn"
+uid="uid://do7aiar8mvglx"
+path="res://.godot/imported/garage_gate.blend-d8c8680fb0ec4975a5d4ebebbb3961b7.scn"
 
 [deps]
 
-source_file="res://map/bottle_shelf.blend"
-dest_files=["res://.godot/imported/bottle_shelf.blend-3be453ba07be5ade2f6a2fe885e90998.scn"]
+source_file="res://map/garage/garage_gate.blend"
+dest_files=["res://.godot/imported/garage_gate.blend-d8c8680fb0ec4975a5d4ebebbb3961b7.scn"]
 
 [params]
 

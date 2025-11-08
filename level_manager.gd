@@ -13,8 +13,8 @@ const CUSTOMER_RANDOM_DELAY = 10
 
 @export var garage_gate: GarageGate
 
-const CustomerScene = preload("res://customer.tscn")
-const PolicemanScene = preload("res://policeman.tscn")
+const CustomerScene = preload("res://characters/NPCs/customer.tscn")
+const PolicemanScene = preload("res://characters/NPCs/policeman.tscn")
 
 var seconds_to_next_customer: float = 0.0
 var current_money: int = 0;

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3ncbc5od4dfj"
-path.s3tc="res://.godot/imported/needs_coffee.png-78f19cb893992fd0983563aa0c8ffd50.s3tc.ctex"
+uid="uid://20xdd5h4oe5i"
+path.s3tc="res://.godot/imported/needs_water.png-7b565e76458db0d32a25413f7e5d965e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://needs_coffee.png"
-dest_files=["res://.godot/imported/needs_coffee.png-78f19cb893992fd0983563aa0c8ffd50.s3tc.ctex"]
+source_file="res://ingredients/needs_water.png"
+dest_files=["res://.godot/imported/needs_water.png-7b565e76458db0d32a25413f7e5d965e.s3tc.ctex"]
 
 [params]
 

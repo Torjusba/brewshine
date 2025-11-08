@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://nji0wcc43ign"
-path="res://.godot/imported/cooking_map.blend-cc725f95a3e519ddfc8d4634c94d1b65.scn"
+uid="uid://dncylhnic31l"
+path="res://.godot/imported/workbench.blend-bfb19afc28fde53fe572aa83f06be7b5.scn"
 
 [deps]
 
-source_file="res://map/cooking_map.blend"
-dest_files=["res://.godot/imported/cooking_map.blend-cc725f95a3e519ddfc8d4634c94d1b65.scn"]
+source_file="res://map/map_placeables/workbench.blend"
+dest_files=["res://.godot/imported/workbench.blend-bfb19afc28fde53fe572aa83f06be7b5.scn"]
 
 [params]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://cx5vl7c3gps0n"]
 
 [ext_resource type="Script" uid="uid://dhv55we4dqoav" path="res://workstations/coffee_maker.gd" id="1_0n7hs"]
-[ext_resource type="PackedScene" uid="uid://pu6ebmrp5rxn" path="res://map/coffee_brewer.blend" id="2_jd0cl"]
-[ext_resource type="Texture2D" uid="uid://20xdd5h4oe5i" path="res://needs_water.png" id="3_uyjwf"]
-[ext_resource type="Texture2D" uid="uid://b3ncbc5od4dfj" path="res://needs_coffee.png" id="4_ip17r"]
+[ext_resource type="PackedScene" uid="uid://pu6ebmrp5rxn" path="res://map/map_placeables/coffee_brewer.blend" id="2_jd0cl"]
+[ext_resource type="Texture2D" uid="uid://20xdd5h4oe5i" path="res://ingredients/needs_water.png" id="3_uyjwf"]
+[ext_resource type="Texture2D" uid="uid://b3ncbc5od4dfj" path="res://ingredients/needs_coffee.png" id="4_ip17r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il1gm"]
 albedo_color = Color(0.5370987, 0.5370987, 0.5370987, 1)

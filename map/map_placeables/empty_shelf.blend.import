@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dl2x7y35ntway"
-path="res://.godot/imported/empty_shelf.blend-6cb2edf3fb645c9758ec20f9b3f79e1e.scn"
+path="res://.godot/imported/empty_shelf.blend-b8f5395bc0f27a3c8e53cc4c25f28771.scn"
 
 [deps]
 
-source_file="res://map/empty_shelf.blend"
-dest_files=["res://.godot/imported/empty_shelf.blend-6cb2edf3fb645c9758ec20f9b3f79e1e.scn"]
+source_file="res://map/map_placeables/empty_shelf.blend"
+dest_files=["res://.godot/imported/empty_shelf.blend-b8f5395bc0f27a3c8e53cc4c25f28771.scn"]
 
 [params]
 
