@@ -20,11 +20,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
-	if currently_carrying:
-		print("Carrying ", currently_carrying)
-		print("At position: ", currently_carrying.global_position)
-
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
