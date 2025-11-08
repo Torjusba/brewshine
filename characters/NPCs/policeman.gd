@@ -24,7 +24,7 @@ func purchase(item: Item3D, price: int) -> void:
 func _process(delta: float) -> void:
 	super._process(delta)
 	var delta_suspiciousness = DEFAULT_SUSPICIOUSNESS_PER_SECOND
-	assert(garage_gate)
+	assert(garage_gate != null)
 	if garage_gate.is_open:
 		var distance_to_target_position = self.position.distance_to(target_position)
 		if distance_to_target_position <= SUPER_SUSPICIOUS_DISTANCE:
