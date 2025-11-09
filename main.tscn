@@ -63,7 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21660268, 0.11229861, 4.040
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2931614, -0.4133296, -1.9008751)
 
 [node name="CoffeeMaker" parent="." instance=ExtResource("6_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4293344, 0.06500256, 2.530384)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.150912, -0.3371333, 2.2033591)
 
 [node name="LevelManager" type="Node3D" parent="." node_paths=PackedStringArray("garage_gate")]
 script = ExtResource("9_kek77")
@@ -152,19 +152,19 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TrashCan" parent="." instance=ExtResource("9_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.690804, 0.08902788, 2.8450108)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7018006, 0.08902788, 0.38175058)
 
 [node name="GarageButton" parent="." node_paths=PackedStringArray("garage_gate") instance=ExtResource("10_4c57u")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.8354375, 0.58152825, -3.0279906)
 garage_gate = NodePath("../cooking_map/garage_gate")
 
 [node name="CoffeeBeansItemBarrel" parent="." instance=ExtResource("11_ycdy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9283237, -0.3390723, 0.29791784)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.2001386, -0.33907324, -0.21444607)
 texture = ExtResource("12_w48qg")
 item_scene = ExtResource("13_ycdy4")
 
 [node name="ItemBarrel" parent="." instance=ExtResource("11_ycdy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3527656, -0.4158954, 0.11604023)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.2126613, -0.41589493, -1.3451841)
 texture = ExtResource("14_vivmo")
 item_scene = ExtResource("15_2cqfq")
 
