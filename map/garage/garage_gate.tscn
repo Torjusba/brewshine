@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2j3lpntjlnxa"]
+[gd_scene load_steps=6 format=3 uid="uid://b2j3lpntjlnxa"]
 
 [ext_resource type="PackedScene" uid="uid://do7aiar8mvglx" path="res://map/garage/garage_gate.blend" id="1_qyt5b"]
 [ext_resource type="Script" uid="uid://cp4np6j46nmyb" path="res://map/garage/garage_gate.gd" id="2_q2urs"]
+[ext_resource type="Material" uid="uid://dk0lq78a15s44" path="res://map/garage/garage_gate.tres" id="3_1axyp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2urs"]
 size = Vector3(0.18383789, 1.9050293, 4.0351563)
@@ -25,8 +26,26 @@ shape = SubResource("BoxShape3D_x8j0a")
 [node name="Armature_001" parent="." index="3"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Armature_001" index="0"]
-bones/6/rotation = Quaternion(-1.714982e-08, -4.4472248e-08, 0.36760202, 0.9299832)
+[node name="Cube_004" parent="Armature_001/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_1axyp")
+
+[node name="Cube_005" parent="Armature_001/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_1axyp")
+
+[node name="Cube_006" parent="Armature_001/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_1axyp")
+
+[node name="Cube_007" parent="Armature_001/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("3_1axyp")
+
+[node name="Cube_008" parent="Armature_001/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_1axyp")
+
+[node name="Cube_009" parent="Armature_001/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("3_1axyp")
+
+[node name="Cube_010" parent="Armature_001/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("3_1axyp")
 
 [node name="Cube" parent="." index="4"]
 visible = false

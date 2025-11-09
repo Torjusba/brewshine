@@ -103,7 +103,7 @@ texture = ExtResource("12_wnugf")
 item_scene = ExtResource("13_58xwf")
 
 [node name="garage_gate" parent="." index="27" instance=ExtResource("15_wnugf")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -1.3)
 
 [node name="door" parent="." index="28" instance=ExtResource("15_58xwf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, -7)
@@ -324,35 +324,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -2)
 [node name="wall60" parent="." index="100" instance=ExtResource("17_sjjp3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 2, -1)
 
-[node name="wall67" parent="." index="101" instance=ExtResource("17_sjjp3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 2, -1)
-
-[node name="wall68" parent="." index="102" instance=ExtResource("17_sjjp3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 2, -1)
-
-[node name="wall69" parent="." index="103" instance=ExtResource("17_sjjp3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, -1)
-
-[node name="wall70" parent="." index="104" instance=ExtResource("17_sjjp3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 2, -1)
-
-[node name="wall71" parent="." index="105" instance=ExtResource("17_sjjp3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 2, -1)
-
-[node name="wall61" parent="." index="106" instance=ExtResource("17_sjjp3")]
+[node name="wall61" parent="." index="101" instance=ExtResource("17_sjjp3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 2, -1)
 
-[node name="wall62" parent="." index="107" instance=ExtResource("17_sjjp3")]
+[node name="wall62" parent="." index="102" instance=ExtResource("17_sjjp3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 2, -2)
 
-[node name="wall63" parent="." index="108" instance=ExtResource("17_sjjp3")]
+[node name="wall63" parent="." index="103" instance=ExtResource("17_sjjp3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 2, -3)
 
-[node name="wall64" parent="." index="109" instance=ExtResource("17_sjjp3")]
+[node name="wall64" parent="." index="104" instance=ExtResource("17_sjjp3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 2, -4)
 
-[node name="wall65" parent="." index="110" instance=ExtResource("17_sjjp3")]
+[node name="wall65" parent="." index="105" instance=ExtResource("17_sjjp3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 2, -5)
 
-[node name="wall66" parent="." index="111" instance=ExtResource("17_sjjp3")]
+[node name="wall66" parent="." index="106" instance=ExtResource("17_sjjp3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 2, -6)
