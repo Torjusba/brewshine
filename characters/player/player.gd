@@ -17,6 +17,13 @@ func _ready() -> void:
 	# Find the camera - should be accessible now that player is child of main scene
 	main_scene_camera = %MainSceneCamera
 	if not main_scene_camera:
+		# Try alternative search methods
+		main_scene_camera = get_node_or_null("%MainSceneCamera")
+		if not main_scene_camera:
+			main_scene_camera = get_tree().current_scene.get_node_or_null("MainSceneCamera")
+	if main_scene_camera:
+		print("Player ", player_id, " found camera: ", main_scene_camera.name)
+	else:
 		print("Warning: Could not find MainSceneCamera for player ", player_id)
 
 func pickup(item: Item3D) -> void:
@@ -93,8 +100,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Normal movement
 		var input_dir := _get_move_input()
-		if main_scene_camera:
-			var camera_forward = -main_scene_camera.global_transform.basis.z
+		if main_scene_camera and is_instance_valid(main_scene_camera):
+			var camera_forward = - main_scene_camera.global_transform.basis.z
 			var camera_right = main_scene_camera.global_transform.basis.x
 			camera_forward.y = 0
 			camera_right.y = 0
@@ -109,6 +116,7 @@ func _physics_process(delta: float) -> void:
 				velocity.z = move_toward(velocity.z, 0, SPEED)
 		else:
 			# Fallback movement without camera (world-space)
+			print_rich("[color=yellow]Warning: Using fallback movement - camera not found[/color]")
 			if input_dir.length() > 0:
 				direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
 				velocity.x = direction.x * SPEED

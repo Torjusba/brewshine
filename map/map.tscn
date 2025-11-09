@@ -380,3 +380,6 @@ omni_range = 2.781
 transform = Transform3D(-3.6, 8.742276e-08, 0, -3.14722e-07, -0.99999976, 0, 0, 0, 3.1751993, 0, 3, -4.5)
 cast_shadow = 3
 mesh = SubResource("PlaneMesh_g0u07")
+
+[node name="CustomerLeaveLocation" type="Node3D" parent="MeshInstance3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.363474, -0.5275984, 5.123149)
