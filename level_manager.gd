@@ -20,7 +20,7 @@ const PolicemanScene = preload("res://characters/NPCs/policeman.tscn")
 
 var seconds_to_next_customer: float = 0.0
 var current_money: int = 0
-const MONEY_NEEDED_TO_WIN: int = 100
+const MONEY_NEEDED_TO_WIN: int = 150
 const TIME_LIMIT_SECONDS: int = 180
 @onready var round_limit_timer: Timer = $RoundLimitTimer
 
