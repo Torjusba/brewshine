@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2j3lpntjlnxa"]
+[gd_scene load_steps=5 format=3 uid="uid://b2j3lpntjlnxa"]
 
 [ext_resource type="PackedScene" uid="uid://do7aiar8mvglx" path="res://map/garage/garage_gate.blend" id="1_qyt5b"]
 [ext_resource type="Script" uid="uid://cp4np6j46nmyb" path="res://map/garage/garage_gate.gd" id="2_q2urs"]
 [ext_resource type="Material" uid="uid://dk0lq78a15s44" path="res://map/garage/garage_gate.tres" id="3_1axyp"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_q2urs"]
-size = Vector3(0.18383789, 1.9050293, 4.0351563)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8j0a"]
 size = Vector3(0.12402344, 1.7577515, 4.98999)
@@ -13,50 +10,53 @@ size = Vector3(0.12402344, 1.7577515, 4.98999)
 [node name="garage_gate" instance=ExtResource("1_qyt5b")]
 script = ExtResource("2_q2urs")
 
-[node name="Armature_Skeleton3D_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.053888798, -0.95983887, 0)
-shape = SubResource("BoxShape3D_q2urs")
-
-[node name="Armature_Skeleton3D#StaticBody3D" type="StaticBody3D" parent="." index="2"]
+[node name="Armature_Skeleton3D#StaticBody3D" type="StaticBody3D" parent="." index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature_Skeleton3D#StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89834595, 0)
 shape = SubResource("BoxShape3D_x8j0a")
 
-[node name="Armature_001" parent="." index="3"]
+[node name="Armature_001" parent="." index="2"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Cube_004" parent="Armature_001/Skeleton3D" index="0"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("3_1axyp")
 
 [node name="Cube_005" parent="Armature_001/Skeleton3D" index="1"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("3_1axyp")
 
 [node name="Cube_006" parent="Armature_001/Skeleton3D" index="2"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("3_1axyp")
 
 [node name="Cube_007" parent="Armature_001/Skeleton3D" index="3"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("3_1axyp")
 
 [node name="Cube_008" parent="Armature_001/Skeleton3D" index="4"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("3_1axyp")
 
 [node name="Cube_009" parent="Armature_001/Skeleton3D" index="5"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("3_1axyp")
 
 [node name="Cube_010" parent="Armature_001/Skeleton3D" index="6"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("3_1axyp")
 
-[node name="Cube" parent="." index="4"]
+[node name="Cube" parent="." index="3"]
 visible = false
 
-[node name="Cube_001" parent="." index="5"]
+[node name="Cube_001" parent="." index="4"]
 visible = false
 
-[node name="Cube_002" parent="." index="6"]
+[node name="Cube_002" parent="." index="5"]
 visible = false
 
-[node name="Cube_003" parent="." index="7"]
+[node name="Cube_003" parent="." index="6"]
 visible = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

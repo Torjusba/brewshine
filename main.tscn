@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://c5xmp4jh8oiey" path="res://map/map.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cx5vl7c3gps0n" path="res://workstations/coffee_maker.tscn" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c2pgi1vch068a" path="res://jail_cell_background.png" id="7_efxa6"]
-[ext_resource type="PackedScene" uid="uid://b53w5u8j4chgh" path="res://workstations/trash_can.tscn" id="9_4c57u"]
+[ext_resource type="PackedScene" path="res://workstations/trash_can.tscn" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://xpsy6q7orpdd" path="res://level_manager.gd" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://b667gfgpu5smh" path="res://map/garage/garage_button.tscn" id="10_4c57u"]
-[ext_resource type="PackedScene" uid="uid://dpwot1utup8mb" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
+[ext_resource type="PackedScene" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://b3ncbc5od4dfj" path="res://ingredients/needs_coffee.png" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://83lv26pm1bo1" path="res://ingredients/coffee_beans.tscn" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://20xdd5h4oe5i" path="res://ingredients/needs_water.png" id="14_vivmo"]
@@ -25,6 +25,8 @@ sky_material = SubResource("ProceduralSkyMaterial_h2yge")
 background_mode = 2
 sky = SubResource("Sky_1bvp3")
 tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
 glow_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ig7tw"]
@@ -38,8 +40,9 @@ font_size = 60
 environment = SubResource("Environment_lquwl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-light_energy = 0.175
+transform = Transform3D(0.7071067, 0.6123725, -0.35355344, 2.7805946e-08, 0.49999994, 0.86602545, 0.7071069, -0.6123724, 0.35355327, 0, 0, 0)
+layers = 3
+light_energy = 0.549
 shadow_enabled = true
 
 [node name="TemporaryFloor" type="StaticBody3D" parent="."]
