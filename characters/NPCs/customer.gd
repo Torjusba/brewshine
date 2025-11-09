@@ -17,6 +17,7 @@ var currently_carrying: Node3D = null
 var level_manager: LevelManager = null
 var wants_moonshine: bool = false
 var is_unhappy: bool = false
+const UNHAPPY_WAIT_TIME: float = 1.5
 
 func purchase(item: Item3D, price: int) -> void:
 	if not level_manager:
@@ -39,7 +40,7 @@ func purchase(item: Item3D, price: int) -> void:
 	if got_what_they_want:
 		_on_wait_after_purchase_timer_timeout()
 	else:
-		$WaitAfterPurchaseTimer.start(2)
+		$WaitAfterPurchaseTimer.start(UNHAPPY_WAIT_TIME)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,13 +58,14 @@ func _process(delta: float) -> void:
 		move_vector = Vector3.ZERO
 		
 	if move_vector.is_zero_approx():
-		current_animation_name = "Idle"
+		if is_unhappy:
+			current_animation_name = "ShakeHead"
+		else:
+			current_animation_name = "Idle"
 	else:
 		current_animation_name = "WalkCycle"
 		position += move_vector
 
-	if is_unhappy:
-		current_animation_name = "ShakeHead"
 	animation_player.play(current_animation_name)
 
 	if (camera):

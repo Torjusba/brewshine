@@ -40,4 +40,6 @@ texture = ExtResource("3_egjju")
 
 [node name="WaitAfterPurchaseTimer" type="Timer" parent="."]
 
+[connection signal="timeout" from="WaitAfterPurchaseTimer" to="." method="_on_wait_after_purchase_timer_timeout"]
+
 [editable path="base_character"]
