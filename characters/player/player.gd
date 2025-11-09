@@ -5,12 +5,19 @@ class_name Player
 @export var device_id: int = -1 # >=0 means use raw gamepad axes for movement
 
 @onready var animation_player: AnimationPlayer = $base_character/AnimationPlayer
+var main_scene_camera: Camera3D
 const SPEED = 5.0
 const DASH_SPEED := 15.0
 const DASH_ACTIVE_DURATION := 0.18
 var dash_active_time: float = 0.0
 var currently_carrying: Item3D = null
 var is_attempting_action: bool = false
+
+func _ready() -> void:
+	# Find the camera - should be accessible now that player is child of main scene
+	main_scene_camera = %MainSceneCamera
+	if not main_scene_camera:
+		print("Warning: Could not find MainSceneCamera for player ", player_id)
 
 func pickup(item: Item3D) -> void:
 	if currently_carrying:
@@ -32,19 +39,22 @@ func _get_move_input() -> Vector2:
 		var x = Input.get_joy_axis(device_id, JOY_AXIS_LEFT_X)
 		var y = Input.get_joy_axis(device_id, JOY_AXIS_LEFT_Y)
 		return Vector2(x, y)
-	return Input.get_vector(_get_action_name("left"), _get_action_name("right"), _get_action_name("up"), _get_action_name("down"))
+	# Always use player 1 keyboard actions for keyboard input
+	return Input.get_vector("left_1", "right_1", "up_1", "down_1")
 
 func _is_dash_pressed() -> bool:
 	if device_id >= 0 and Input.is_joy_known(device_id):
 		return Input.is_joy_button_pressed(device_id, JOY_BUTTON_A) and %DashTimer.is_stopped()
-	return Input.is_action_just_pressed(_get_action_name("dash")) and %DashTimer.is_stopped()
+	# Always use player 1 keyboard actions for keyboard input
+	return Input.is_action_just_pressed("dash_1") and %DashTimer.is_stopped()
 
 func _is_action_pressed() -> float:
 	if device_id >= 0 and Input.is_joy_known(device_id):
 		if Input.is_joy_button_pressed(device_id, JOY_BUTTON_X):
 			return 1.0
 		return 0.0
-	return Input.get_action_strength(_get_action_name("action"))
+	# Always use player 1 keyboard actions for keyboard input
+	return Input.get_action_strength("action_1")
 
 func _process(_delta: float) -> void:
 	var action_input = _is_action_pressed()
@@ -83,19 +93,29 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Normal movement
 		var input_dir := _get_move_input()
-		var camera_forward = -%MainSceneCamera.global_transform.basis.z
-		var camera_right = %MainSceneCamera.global_transform.basis.x
-		camera_forward.y = 0
-		camera_right.y = 0
-		camera_forward = camera_forward.normalized()
-		camera_right = camera_right.normalized()
-		if input_dir.length() > 0:
-			direction = (camera_right * input_dir.x + camera_forward * -input_dir.y).normalized()
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+		if main_scene_camera:
+			var camera_forward = -main_scene_camera.global_transform.basis.z
+			var camera_right = main_scene_camera.global_transform.basis.x
+			camera_forward.y = 0
+			camera_right.y = 0
+			camera_forward = camera_forward.normalized()
+			camera_right = camera_right.normalized()
+			if input_dir.length() > 0:
+				direction = (camera_right * input_dir.x + camera_forward * -input_dir.y).normalized()
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.z = move_toward(velocity.z, 0, SPEED)
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			# Fallback movement without camera (world-space)
+			if input_dir.length() > 0:
+				direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	if not direction.is_zero_approx():
 		transform.basis = Basis.looking_at(direction)

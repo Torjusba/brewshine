@@ -10,6 +10,7 @@ const CUSTOMER_RANDOM_DELAY = 8
 @onready var customer_spawn_location: Node3D = $CustomerSpawnLocation
 @onready var customer_leave_location: Node3D = $CustomerLeaveLocation
 @onready var customer_purchase_location: Node3D = $CustomerPurchaseLocation
+@onready var player_spown_location: Node3D = %PlayerSpownLocation
 
 @export var garage_gate: GarageGate
 
@@ -17,6 +18,7 @@ const CUSTOMER_RANDOM_DELAY = 8
 
 const CustomerScene = preload("res://characters/NPCs/customer.tscn")
 const PolicemanScene = preload("res://characters/NPCs/policeman.tscn")
+const PlayerScene = preload("res://characters/player/player.tscn")
 
 var seconds_to_next_customer: float = 0.0
 var current_money: int = 0
@@ -32,6 +34,8 @@ const TIME_LIMIT_SECONDS: int = 180
 @onready var money_gained_label: Label = $CanvasLayer/MoneyGainedLabel
 
 var customer_spawn_area_occupied: int = 0
+var spawned_players: Array[Player] = []
+var player_spawn_offset: float = 2.0 # Distance between players when spawning
 
 func lose(reason: String = "", should_jail: bool = true) -> void:
 	if not should_jail:
@@ -52,12 +56,57 @@ func win() -> void:
 
 func add_payment(money: int) -> void:
 	current_money += money
-	score_label.text = "$" + str(current_money)  + " / $" + str(MONEY_NEEDED_TO_WIN)
+	score_label.text = "$" + str(current_money) + " / $" + str(MONEY_NEEDED_TO_WIN)
 	if money > 0:
 		money_gained_label.text = "+ $" + str(money)
 		money_gained_label.visible = true
 		money_gained_label_timer.start()
 
+
+func spawn_player(player_id: int, device_id: int = -1) -> void:
+	# Check if player already exists
+	for player in spawned_players:
+		if player.player_id == player_id:
+			print("Player", player_id, " already spawned")
+			return
+
+	var new_player: Player = PlayerScene.instantiate()
+	new_player.player_id = player_id
+	new_player.device_id = device_id
+	new_player.name = "Player" + str(player_id)
+
+	# Calculate spawn position to avoid overlap
+	var spawn_pos: Vector3
+	if has_node("%PlayerSpawnLocation"):
+		spawn_pos = %PlayerSpawnLocation.global_position
+	else:
+		# Fallback to origin if PlayerSpawnLocation doesn't exist
+		spawn_pos = Vector3.ZERO
+		print("Warning: PlayerSpawnLocation not found, spawning at origin")
+
+	var offset_count = spawned_players.size()
+	spawn_pos.x += offset_count * player_spawn_offset
+
+	new_player.global_position = spawn_pos
+
+	# Add player to the main scene instead of LevelManager to fix camera hierarchy
+	get_tree().current_scene.add_child(new_player)
+	spawned_players.append(new_player)
+	print("Spawned Player", player_id, " at position ", spawn_pos)
+
+func check_player_spawn_inputs() -> void:
+	var connected_joypads = Input.get_connected_joypads()
+
+	# Check for keyboard spawn (Space key for Player1)
+	if Input.is_action_just_pressed("ui_accept"): # Space key
+		spawn_player(1, -1) # Player1 with keyboard
+
+	# Check for gamepad spawns (X button)
+	for i in range(connected_joypads.size()):
+		var device_id = connected_joypads[i]
+		if Input.is_joy_button_pressed(device_id, JOY_BUTTON_X):
+			var player_id = i + 2 # Player2 for first gamepad, Player3 for second
+			spawn_player(player_id, device_id)
 
 func spawn_new_customer() -> void:
 	var new_customer: Customer3D = null
@@ -71,7 +120,6 @@ func spawn_new_customer() -> void:
 		new_customer.name = "Customer"
 		new_customer.wants_moonshine = randf() <= WANTS_MOONSHINE_RATE
 
-
 	new_customer.camera = camera
 	new_customer.position = customer_spawn_location.position
 	new_customer.target_position = customer_purchase_location.position
@@ -82,13 +130,15 @@ func spawn_new_customer() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lose_canvas.visible = false
-	add_payment(0)  # to init the score label correctly
+	add_payment(0) # to init the score label correctly
 	round_limit_timer.start(TIME_LIMIT_SECONDS)
 	timelimit_progressbar.max_value = TIME_LIMIT_SECONDS
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	check_player_spawn_inputs()
+
 	if seconds_to_next_customer <= 0.0 and not customer_spawn_area_occupied:
 		print("Spawning new customer")
 		spawn_new_customer()

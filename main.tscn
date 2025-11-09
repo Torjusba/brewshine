@@ -1,6 +1,5 @@
-[gd_scene load_steps=24 format=3 uid="uid://dcqpwlmumhgpi"]
+[gd_scene load_steps=23 format=3 uid="uid://dcqpwlmumhgpi"]
 
-[ext_resource type="PackedScene" uid="uid://b1e75dpa3j3n3" path="res://characters/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://workstations/front_desk.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5xmp4jh8oiey" path="res://map/map.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cx5vl7c3gps0n" path="res://workstations/coffee_maker.tscn" id="6_7mycd"]
@@ -8,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b53w5u8j4chgh" path="res://workstations/trash_can.tscn" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://xpsy6q7orpdd" path="res://level_manager.gd" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://b667gfgpu5smh" path="res://map/garage/garage_button.tscn" id="10_4c57u"]
-[ext_resource type="PackedScene" uid="uid://dpwot1utup8mb" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
+[ext_resource type="PackedScene" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://b3ncbc5od4dfj" path="res://ingredients/needs_coffee.png" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://83lv26pm1bo1" path="res://ingredients/coffee_beans.tscn" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://20xdd5h4oe5i" path="res://ingredients/needs_water.png" id="14_vivmo"]
@@ -69,10 +68,6 @@ shape = SubResource("WorldBoundaryShape3D_ig7tw")
 unique_name_in_owner = true
 transform = Transform3D(-3.7855173e-08, 0.8428377, -0.53816783, 2.1855685e-08, 0.53816783, 0.8428377, 1, 2.0143741e-08, -3.879323e-08, -3.6126432, 6.6678643, -3.1123466)
 size = 9.039969
-
-[node name="Player1" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.025552273, -0.409451, 1.5179462)
-device_id = 0
 
 [node name="FrontDesk" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21660268, 0.11229861, 4.0408096)
@@ -223,6 +218,10 @@ one_shot = true
 [node name="MoneyGainedLabelTimer" type="Timer" parent="LevelManager"]
 one_shot = true
 
+[node name="PlayerSpownLocation" type="Node3D" parent="LevelManager"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.273052, -1.0551968, 1.2462978)
+
 [node name="TrashCan" parent="." instance=ExtResource("9_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7018006, 0.08902788, 0.38175058)
 
@@ -239,11 +238,6 @@ item_scene = ExtResource("13_ycdy4")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.2126613, -0.41589493, -1.3451841)
 texture = ExtResource("14_vivmo")
 item_scene = ExtResource("15_2cqfq")
-
-[node name="Player2" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-player_id = 2
-device_id = 1
 
 [connection signal="body_entered" from="LevelManager/CustomerSpawnLocation/Area3D" to="LevelManager" method="_on_customer_spawn_area_body_entered"]
 [connection signal="body_exited" from="LevelManager/CustomerSpawnLocation/Area3D" to="LevelManager" method="_on_customer_spawn_area_body_exited"]
