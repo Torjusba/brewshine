@@ -57,7 +57,7 @@ size = 9.039969
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.025552273, -0.409451, 1.5179462)
 
 [node name="FrontDesk" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31014192, 0.11229861, 4.0408096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21660268, 0.11229861, 4.0408096)
 
 [node name="cooking_map" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2931614, -0.4133296, -1.9008751)
