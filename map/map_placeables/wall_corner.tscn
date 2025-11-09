@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://3gdjdmsevodt"]
+
+[ext_resource type="PackedScene" uid="uid://dlxl7ub4v3hgd" path="res://map/map_placeables/wall_corner.blend" id="1_cxruv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ey3k"]
+size = Vector3(0.3, 1, 0.3)
+
+[node name="wall_corner" instance=ExtResource("1_cxruv")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.4, 0.35)
+shape = SubResource("BoxShape3D_6ey3k")

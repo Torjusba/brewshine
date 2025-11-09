@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpuijemnq5b2i" path="res://characters/cosmetics/hair.blend" id="3_i3pqv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+radius = 0.4
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4flbx")

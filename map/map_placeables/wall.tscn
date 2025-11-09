@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2u7qhg2tuw4k"]
+
+[ext_resource type="PackedScene" uid="uid://8l8c2q0drwu1" path="res://map/map_placeables/wall.blend" id="1_np1ow"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7bd3f"]
+size = Vector3(0.3, 1, 1)
+
+[node name="wall" instance=ExtResource("1_np1ow")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.5, 0)
+shape = SubResource("BoxShape3D_7bd3f")
