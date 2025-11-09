@@ -19,12 +19,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7955638, -0.6173351)
 
 [node name="base_character" parent="." instance=ExtResource("2_onrkg")]
 
+[node name="Skeleton3D" parent="base_character/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.04932529, 0.7053844, -0.0493253, 0.70538425)
+bones/1/rotation = Quaternion(-2.220446e-16, 5.9604645e-08, -3.7252903e-09, 1)
+bones/2/position = Vector3(0.26327232, 0.09561843, -0.51620364)
+bones/2/rotation = Quaternion(-0.97814405, -0.037009943, -0.031988565, 0.20209253)
+bones/4/rotation = Quaternion(-8.242473e-09, -2.875566e-10, 0.050706923, 0.99871355)
+bones/5/scale = Vector3(1, 0.99999994, 0.99999994)
+bones/6/scale = Vector3(1, 1.0000001, 1)
+bones/7/position = Vector3(-0.21209691, 0.043133467, 0.5743601)
+bones/7/rotation = Quaternion(0.031988416, 0.2020925, 0.97814405, -0.037009858)
+
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="base_character/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-1.1920929e-07, 0, 1, 0, 0.99999994, 0, -1, 0, -1.1920929e-07, 2.5400574e-22, 0.9287162, -2.5400574e-22)
+transform = Transform3D(-3.5680497e-07, 1.2316589e-08, 1, -0.038159758, 0.9992716, -2.2471564e-08, -0.9992717, -0.038159736, -3.5735846e-07, -6.9194765e-09, 0.919678, -0.12925234)
 bone_name = "Bone.002"
 bone_idx = 4
 
 [node name="hair" parent="base_character/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_i3pqv")]
 transform = Transform3D(-3.5467608e-08, 0, -0.85656947, 0, 0.8114046, 0, 0.81140435, 0, -3.7441836e-08, -0.01476109, 0.35887957, -1.7596591e-09)
+
+[node name="DashTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
 
 [editable path="base_character"]
