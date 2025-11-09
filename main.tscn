@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dcqpwlmumhgpi"]
+[gd_scene load_steps=23 format=3 uid="uid://dcqpwlmumhgpi"]
 
 [ext_resource type="PackedScene" uid="uid://b1e75dpa3j3n3" path="res://characters/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://workstations/front_desk.tscn" id="2_0xm2m"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b53w5u8j4chgh" path="res://workstations/trash_can.tscn" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://xpsy6q7orpdd" path="res://level_manager.gd" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://b667gfgpu5smh" path="res://map/garage/garage_button.tscn" id="10_4c57u"]
-[ext_resource type="PackedScene" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dpwot1utup8mb" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://b3ncbc5od4dfj" path="res://ingredients/needs_coffee.png" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://83lv26pm1bo1" path="res://ingredients/coffee_beans.tscn" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://20xdd5h4oe5i" path="res://ingredients/needs_water.png" id="14_vivmo"]
@@ -30,6 +30,14 @@ ssao_enabled = true
 glow_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ig7tw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ycdy4"]
+font_size = 32
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ycdy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
+bg_color = Color(0.12535256, 0.7007459, 0.53527576, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ycdy4"]
 
@@ -77,11 +85,42 @@ garage_gate = NodePath("../cooking_map/garage_gate")
 [node name="CanvasLayer" type="CanvasLayer" parent="LevelManager"]
 
 [node name="ScoreLabel" type="Label" parent="LevelManager/CanvasLayer"]
-offset_left = 16.0
-offset_top = 12.0
-offset_right = 90.0
-offset_bottom = 35.0
-text = "$0"
+anchors_preset = -1
+anchor_left = 0.8619792
+anchor_top = 0.03549383
+anchor_right = 0.9826389
+anchor_bottom = 0.10493827
+text = "$0 / $100"
+label_settings = SubResource("LabelSettings_ycdy4")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="LevelManager/CanvasLayer"]
+material = SubResource("CanvasItemMaterial_ycdy4")
+anchors_preset = -1
+anchor_left = 0.19270833
+anchor_top = 0.041666668
+anchor_right = 0.8125
+anchor_bottom = 0.11111111
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 7.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Time left"
+theme_override_styles/fill = SubResource("StyleBoxFlat_w48qg")
+value = 40.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="LevelManager/CanvasLayer/ProgressBar"]
+layout_mode = 0
+anchor_left = 0.4467787
+anchor_top = 0.2888889
+anchor_right = 0.5420168
+anchor_bottom = 0.8
+text = "Time left"
+metadata/_edit_use_anchors_ = true
 
 [node name="CustomerSpawnLocation" type="Node3D" parent="LevelManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.634705, -0.5275984, 5.123149)
@@ -99,9 +138,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.363474, -0.5275984, 5.1231
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39010525, -0.5275984, 5.123149)
 
 [node name="LoseCanvas" type="CanvasLayer" parent="LevelManager"]
+visible = false
 follow_viewport_enabled = true
 
-[node name="TextureRect" type="TextureRect" parent="LevelManager/LoseCanvas"]
+[node name="IronBars" type="TextureRect" parent="LevelManager/LoseCanvas"]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,6 +202,10 @@ text = "REASON"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="RoundLimitTimer" type="Timer" parent="LevelManager"]
+wait_time = 180.0
+one_shot = true
+
 [node name="TrashCan" parent="." instance=ExtResource("9_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7018006, 0.08902788, 0.38175058)
 
@@ -182,5 +226,6 @@ item_scene = ExtResource("15_2cqfq")
 [connection signal="body_entered" from="LevelManager/CustomerSpawnLocation/Area3D" to="LevelManager" method="_on_customer_spawn_area_body_entered"]
 [connection signal="body_exited" from="LevelManager/CustomerSpawnLocation/Area3D" to="LevelManager" method="_on_customer_spawn_area_body_exited"]
 [connection signal="pressed" from="LevelManager/LoseCanvas/ColorRect/ReplayButton" to="LevelManager" method="_on_replay_button_pressed"]
+[connection signal="timeout" from="LevelManager/RoundLimitTimer" to="LevelManager" method="_on_round_limit_timer_timeout"]
 
 [editable path="cooking_map"]

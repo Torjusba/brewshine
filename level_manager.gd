@@ -19,20 +19,38 @@ const CustomerScene = preload("res://characters/NPCs/customer.tscn")
 const PolicemanScene = preload("res://characters/NPCs/policeman.tscn")
 
 var seconds_to_next_customer: float = 0.0
-var current_money: int = 0;
+var current_money: int = 0
+const MONEY_NEEDED_TO_WIN: int = 100
+const TIME_LIMIT_SECONDS: int = 180
+@onready var round_limit_timer: Timer = $RoundLimitTimer
+
 @onready var lose_canvas: CanvasLayer = $LoseCanvas
 @onready var loss_reason_label: Label = $LoseCanvas/ColorRect/LossReasonLabel
+@onready var timelimit_progressbar: ProgressBar = $CanvasLayer/ProgressBar
+@onready var iron_bars: TextureRect = $LoseCanvas/IronBars
+@onready var you_lose_label: Label = $LoseCanvas/ColorRect/YouLoseLabel
 
 var customer_spawn_area_occupied: int = 0
 
-func lose(reason: String = "") -> void:
+func lose(reason: String = "", should_jail: bool = true) -> void:
+	if not should_jail:
+		iron_bars.visible = false
+		you_lose_label.text = "You failed!"
 	loss_reason_label.text = reason
 	lose_canvas.visible = true
 	Engine.time_scale = 0
 
+func win() -> void:
+	iron_bars.visible = false
+	you_lose_label.text = "You win!"
+	loss_reason_label.text = "You made $" + str(current_money)
+	lose_canvas.visible = true
+	Engine.time_scale = 0
+
+
 func add_payment(money: int) -> void:
 	current_money += money
-	score_label.text = "$" + str(current_money)
+	score_label.text = "$" + str(current_money)  + " / $" + str(MONEY_NEEDED_TO_WIN)
 
 func spawn_new_customer() -> void:
 	var new_customer: Customer3D = null
@@ -57,6 +75,9 @@ func spawn_new_customer() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lose_canvas.visible = false
+	add_payment(0)  # to init the score label correctly
+	round_limit_timer.start(TIME_LIMIT_SECONDS)
+	timelimit_progressbar.max_value = TIME_LIMIT_SECONDS
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,6 +88,9 @@ func _process(delta: float) -> void:
 		seconds_to_next_customer = BASE_CUSTOMER_DELAY + randf() * CUSTOMER_RANDOM_DELAY
 
 	seconds_to_next_customer -= delta
+	timelimit_progressbar.value = round_limit_timer.time_left
+	if (current_money >= MONEY_NEEDED_TO_WIN):
+		win()
 
 
 func _on_replay_button_pressed() -> void:
@@ -80,3 +104,7 @@ func _on_customer_spawn_area_body_entered(_body: Node3D) -> void:
 
 func _on_customer_spawn_area_body_exited(_body: Node3D) -> void:
 	customer_spawn_area_occupied -= 1
+
+
+func _on_round_limit_timer_timeout() -> void:
+	lose("You did not make enough money in time", false)

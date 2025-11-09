@@ -11,6 +11,10 @@ var active_player: Player = null
 var active_customer: Customer3D = null
 var active_customers = Array()
 
+const DEFAULT_PRICE: int = 1
+const COFFEE_PRICE: int = 5
+const MOONSHINE_PRICE: int = 15
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	front_desk_original_material = mesh_instance_3d.get_active_material(0).duplicate()
@@ -36,7 +40,13 @@ func _process(_delta: float) -> void:
 			if active_player.currently_carrying:
 				print("Handing ", active_player.currently_carrying, " to customer")
 				var customer = active_customers.pop_front()
-				customer.purchase(active_player.currently_carrying, 10)
+				var price: int = DEFAULT_PRICE
+				if active_player.currently_carrying.item_name == "Coffee":
+					price = COFFEE_PRICE
+				elif active_player.currently_carrying.item_name == "Moonshine":
+					price = MOONSHINE_PRICE
+
+				customer.purchase(active_player.currently_carrying, price)
 				active_player.currently_carrying = null
 
 
