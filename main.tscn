@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dcqpwlmumhgpi"]
+[gd_scene load_steps=20 format=3 uid="uid://dcqpwlmumhgpi"]
 
 [ext_resource type="PackedScene" uid="uid://b1e75dpa3j3n3" path="res://characters/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://h6cd18sk61m6" path="res://workstations/front_desk.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c5xmp4jh8oiey" path="res://map/map.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cx5vl7c3gps0n" path="res://workstations/coffee_maker.tscn" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c2pgi1vch068a" path="res://jail_cell_background.png" id="7_efxa6"]
-[ext_resource type="PackedScene" path="res://workstations/trash_can.tscn" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://b53w5u8j4chgh" path="res://workstations/trash_can.tscn" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://xpsy6q7orpdd" path="res://level_manager.gd" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://b667gfgpu5smh" path="res://map/garage/garage_button.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" path="res://workstations/item_barrel.tscn" id="11_ycdy4"]
@@ -30,6 +30,8 @@ ssao_enabled = true
 glow_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ig7tw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycdy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4c57u"]
 font_size = 60
@@ -83,6 +85,12 @@ text = "$0"
 
 [node name="CustomerSpawnLocation" type="Node3D" parent="LevelManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.634705, -0.5275984, 5.123149)
+
+[node name="Area3D" type="Area3D" parent="LevelManager/CustomerSpawnLocation"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/CustomerSpawnLocation/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71085215, 0)
+shape = SubResource("BoxShape3D_ycdy4")
 
 [node name="CustomerLeaveLocation" type="Node3D" parent="LevelManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.363474, -0.5275984, 5.123149)
@@ -171,6 +179,8 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.21
 texture = ExtResource("14_vivmo")
 item_scene = ExtResource("15_2cqfq")
 
+[connection signal="body_entered" from="LevelManager/CustomerSpawnLocation/Area3D" to="LevelManager" method="_on_customer_spawn_area_body_entered"]
+[connection signal="body_exited" from="LevelManager/CustomerSpawnLocation/Area3D" to="LevelManager" method="_on_customer_spawn_area_body_exited"]
 [connection signal="pressed" from="LevelManager/LoseCanvas/ColorRect/ReplayButton" to="LevelManager" method="_on_replay_button_pressed"]
 
 [editable path="cooking_map"]
