@@ -8,3 +8,4 @@ script = ExtResource("1_akkn8")
 metadata/_custom_type_script = "uid://clu5qxqpx4nwm"
 
 [node name="moonshine_bottle" parent="." instance=ExtResource("2_85gyt")]
+transform = Transform3D(-9.0919684e-08, 0, -2.08, 0, 2.08, 0, 2.08, 0, -9.0919684e-08, 0, 0, 0)
